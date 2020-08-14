@@ -1,0 +1,19 @@
+version: "3.2"
+services:
+  php:
+    build: './php/'
+    container_name: 'php'
+    network_mode: host
+  wildfly:
+    build: './wildfly/'
+    container_name: 'wildfly'
+    network_mode: host
+  apache:
+    build: './apache/'
+    container_name: 'apache'
+    depends_on:
+      - php
+    network_mode: host
+    ports:
+      - "80:80"
+    
